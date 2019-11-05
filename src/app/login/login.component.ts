@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   }
 
   setUser(user){
-    if(user.innerText !== undefined)
-      this._data = user.innerText;
-    else this._data = 'errorUser'
-    console.log('user:',user.innerText)
+    if(user !== undefined)
+      this._data = user;
+    else this._data = 'user error'
+    console.log('user:',user)
     this.router.navigate(['./toget']);
   }
 }

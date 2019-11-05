@@ -1,0 +1,7 @@
+.slider {
+    display: flex;
+}
+
+mat-slide-toggle {
+    transform: scale(2);
+}

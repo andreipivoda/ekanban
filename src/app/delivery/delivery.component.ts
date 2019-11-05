@@ -21,6 +21,8 @@ export class DeliveryComponent implements OnInit {
       this.router.navigate(['./todo']);
     if(action === "INCARCARE")
       this.router.navigate(['./toget']);
+    if(action === "Setari")
+      this.router.navigate(['./settings']);
   }
 
 }
