@@ -15,6 +15,7 @@ import { TableComponent } from './table/table.component';
 import { DispatchesComponent } from './dispatches/dispatches.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { LoginComponent } from './login/login.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     TableComponent,
     DispatchesComponent,
     DeliveryComponent,
-    LoginComponent
+    LoginComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
