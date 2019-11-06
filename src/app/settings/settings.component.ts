@@ -11,6 +11,11 @@ export class SettingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem('x','y')
+  }
+
+  getC(){
+    return true;
   }
 
 }
