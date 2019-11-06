@@ -1,17 +1,25 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Router} from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-delivery',
   templateUrl: './delivery.component.html',
   styleUrls: ['./delivery.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class DeliveryComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private _data:DataService,private router: Router) {
+    // setInterval(() => { console.log(this.delivery)}, 1000);
+  }
 
+  delivery;
+  ttype="delivery"
   ngOnInit() {
+   this._data.getDelivery().subscribe( data =>{
+     this.delivery = data;
+   })
+
   }
 
   sideBarAction(action){
@@ -24,5 +32,6 @@ export class DeliveryComponent implements OnInit {
     if(action === "Setari")
       this.router.navigate(['./settings']);
   }
+
 
 }

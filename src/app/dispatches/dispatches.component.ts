@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 })
 export class DispatchesComponent implements OnInit {
 
+  ttype="dispatches"
   constructor(private router: Router) { }
 
   ngOnInit() {

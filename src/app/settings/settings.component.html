@@ -1,44 +1,17 @@
 <mat-grid-list cols="12" rowHeight="1:6">
     <mat-grid-tile style="background-color: lightcyan;">
-
+        <div>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">LIVRARE</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">INCARCARE</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">Setari</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">Autentificare</button>
+        </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="10">
         <div class="sliders">
-
-            <mat-list>
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="checked"> Linia C0</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C1</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C2</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C3</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C4</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C5</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C6</mat-slide-toggle>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <mat-slide-toggle [(ngModel)]="getC()"> Linia C7</mat-slide-toggle>
-                </mat-list-item>
-
-            </mat-list>
+            <div *ngFor="let item of lines;index as i;">
+                <mat-slide-toggle disabled [checked]="item.active" (change)="setValue($event)" class="slide-toggle">{{item.line}}</mat-slide-toggle>
+            </div>
         </div>
     </mat-grid-tile>
     <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile>

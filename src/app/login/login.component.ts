@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -17,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   setUser(user){
     if(user !== undefined)
-      this._data = user;
-    else this._data = 'user error'
+      this._data.activeUser = user;
+    else this._data.activeUser = 'user error'
     console.log('user:',user)
     this.router.navigate(['./toget']);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -8,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  @Input() ttype;
+  ACTIONTYPE:string;
   ELEMENT_DATA  = [
     {position: 1, partno: '00AJDJ22223', location: 1.0079, quantity: 'H' , delivered:false },
     {position: 2, partno: 'Helium', location: 4.0026, quantity: 'He' , delivered:false },
@@ -23,7 +25,9 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['partno', 'location', 'quantity','position'];
   dataSource = this.ELEMENT_DATA;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   selectRow(ex){
 
@@ -31,6 +35,10 @@ export class TableComponent implements OnInit {
     console.log(this.dataSource);
   }
   ngOnInit() {
+    this.ACTIONTYPE = this.ttype === 'delivery' ? 'incarcat' : this.ACTIONTYPE;
+    this.ACTIONTYPE = this.ttype === 'dispatches' ? 'livrat': this.ACTIONTYPE;
+    console.log('type',this.ttype)
+
   }
 
 }
