@@ -12,10 +12,7 @@ export class DataService {
 
    }
 
-  //  this.apiService.getNews().subscribe((data)=>{
-  //   console.log(data);
-  //   this.articles = data['articles'];
-  // });
+
 
   getDelivery(){
     return this._http.get("http://localhost:3000/pyrodeploy");
