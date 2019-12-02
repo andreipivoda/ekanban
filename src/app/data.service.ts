@@ -1,20 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DataService {
-
-  activeUser:string;
+  activeUser: string;
+  delivery;
   constructor(private _http: HttpClient) {
+    console.log("data service oninit");
 
-   }
+  }
 
-
-
-  getDelivery(){
+  getDelivery() {
     return this._http.get("http://localhost:3000/pyrodeploy");
+  }
+
+  getDispatches() {
+    return this._http.get("http://localhost:3000/pyroload");
   }
 }

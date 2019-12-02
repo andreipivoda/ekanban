@@ -1,31 +1,24 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "../data.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-delivery",
   templateUrl: "./delivery.component.html",
-  styleUrls: ["./delivery.component.css"]
+  styleUrls: ["./delivery.component.css"],
+  encapsulation: ViewEncapsulation.None
 })
 export class DeliveryComponent implements OnInit {
-  constructor(private _data: DataService, private router: Router) {
-    // setInterval(() => { console.log(this.delivery)}, 1000);
-  }
-  tdata = [
-    {
-      position: 1,
-      partno: "09743290flkfd",
-      location: 1.555079,
-      quantity: "FFF",
-      delivered: false
-    }
-  ];
+  constructor(private _data: DataService, private router: Router) {}
 
-  delivery;
-  ttype = "delivery";
+  sub: Subscription;
+  tdata: any;
+  displayedColumns: string[] = ["line","reference","units","loaded","completed"];
   ngOnInit() {
-    this._data.getDelivery().subscribe(data => {
-      this.delivery = data;
+    console.log("delivery oninit");
+    this.sub = this._data.getDelivery().subscribe(value => {
+      this.tdata = value;
     });
   }
 
@@ -34,5 +27,9 @@ export class DeliveryComponent implements OnInit {
     if (action === "LIVRARE") this.router.navigate(["./todo"]);
     if (action === "INCARCARE") this.router.navigate(["./toget"]);
     if (action === "Setari") this.router.navigate(["./settings"]);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

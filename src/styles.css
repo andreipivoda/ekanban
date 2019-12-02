@@ -14,9 +14,8 @@ mat-list-item {
     margin-bottom: 2em;
 }
 
-.mat-grid-tile .mat-figure {
-    justify-content: flex-start;
-    align-items: flex-start;
+table {
+    width: 100%;
 }
 
 .sideButtons {
@@ -25,17 +24,16 @@ mat-list-item {
     width: 10em;
 }
 
-
-/* .mat-grid-tile .mat-figure {
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
+.mat-grid-tile .mat-figure {
+    /* justify-content: flex-start !important; */
+    /* align-items: flex-start !important; */
 }
 
 .sideButtons {
-  margin-top: 10em !important;
-  margin-left: 1em !important;
-  width: 10em;
-} */
+    margin-top: 10em !important;
+    margin-left: 1em !important;
+    width: 10em;
+}
 
 .sliders {
     /* min-width: 100%; */
@@ -51,4 +49,8 @@ mat-list-item {
 
 .slide-toggle {
     padding-top: 3em;
+}
+
+.mat-figure {
+    flex-direction: column;
 }
