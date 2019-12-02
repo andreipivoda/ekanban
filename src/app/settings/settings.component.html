@@ -1,5 +1,5 @@
 <mat-grid-list cols="12" rowHeight="1:6">
-    <mat-grid-tile style="background-color: lightcyan;">
+    <mat-grid-tile [colspan]="2" style="background-color: lightcyan;">
         <div>
             <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">LIVRARE</button>
             <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">INCARCARE</button>
@@ -14,5 +14,5 @@
             </div>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile>
+    <!-- <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile> -->
 </mat-grid-list>

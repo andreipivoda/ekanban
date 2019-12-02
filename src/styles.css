@@ -35,6 +35,10 @@ table {
     width: 10em;
 }
 
+.loadButton {
+    width: 300px;
+}
+
 .sliders {
     /* min-width: 100%; */
     /* min-height: 100%; */
