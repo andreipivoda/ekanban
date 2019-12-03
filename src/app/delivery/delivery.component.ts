@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "../data.service";
 import { Subscription } from "rxjs";
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: "app-delivery",
@@ -10,16 +11,31 @@ import { Subscription } from "rxjs";
   encapsulation: ViewEncapsulation.None
 })
 export class DeliveryComponent implements OnInit {
-  constructor(private _data: DataService, private router: Router) {}
+  viewport = 'large';
+
+  constructor(private _data: DataService, private router: Router,private breakpointObserver: BreakpointObserver) {
+    console.log('constructor');
+    breakpointObserver.observe([
+      Breakpoints.HandsetLandscape,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if (result.matches) {
+        // console.log('match',result.matches,result)
+        this.viewport = 'small';
+      }
+    });
+  }
 
   sub: Subscription;
   tdata: any;
-  displayedColumns: string[] = ["line","reference","units","loaded","completed"];
+  displayedColumns: string[] = ["line","reference","units","loaded","completed","actions"];
   ngOnInit() {
+    console.log('ngOnInit');
     console.log("delivery oninit");
     this.sub = this._data.getDelivery().subscribe(value => {
       this.tdata = value;
     });
+    console.log('this.viewport',this.viewport)
   }
 
   sideBarAction(action) {
@@ -30,6 +46,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    console.log('ngOnDestroy');
     this.sub.unsubscribe();
   }
 }

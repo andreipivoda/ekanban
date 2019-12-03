@@ -1,8 +1,8 @@
 <mat-grid-list cols="12" rowHeight="1:6">
-    <mat-grid-tile style="background-color: lightcyan;">
+    <mat-grid-tile [colspan]="1" style="background-color: lightcyan;">
 
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="10">
+    <mat-grid-tile [colspan]="11">
         <div class="userlist">
             <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO6295</button>
             <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO7247</button>
@@ -16,5 +16,5 @@
             <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO1874</button>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile>
+    <!-- <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile> -->
 </mat-grid-list>
