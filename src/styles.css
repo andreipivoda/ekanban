@@ -36,7 +36,8 @@ table {
 }
 
 .loadButton {
-    width: 300px;
+    width: 30vw;
+    height: 4vh;
 }
 
 .sliders {
@@ -55,6 +56,51 @@ table {
     padding-top: 3em;
 }
 
+.mat-header-cell {
+    text-align: center !important;
+}
+
 .mat-figure {
     flex-direction: column;
 }
+
+.mat-column-line {
+    width: 20%;
+    text-align: center;
+}
+
+.mat-column-reference {
+    width: 20%;
+    text-align: center;
+}
+
+.mat-column-units {
+    width: 20%;
+    text-align: center;
+}
+
+.mat-column-loaded {
+    /* width: 15%; */
+}
+
+.mat-column-completed {
+    /* width: 15%; */
+}
+
+th .mat-column-actions {
+    /* width: 40%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+
+/* .mat-row {
+    height: auto;
+} */
+
+
+/* .math-cell {
+    padding: 30px;
+} */

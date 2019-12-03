@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
 export class DispatchesComponent implements OnInit {
   sub: Subscription;
   tdata: any;
-  displayedColumns: string[] = ["line","reference","units","loaded","completed","actions"];
+  displayedColumns: string[] = ["line","reference","units","actions"];
   constructor(private _data: DataService,private router: Router) {}
   ngOnInit() {
     console.log("dispatches oninit");

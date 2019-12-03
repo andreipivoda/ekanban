@@ -28,7 +28,7 @@ export class DeliveryComponent implements OnInit {
 
   sub: Subscription;
   tdata: any;
-  displayedColumns: string[] = ["line","reference","units","loaded","completed","actions"];
+  displayedColumns: string[] = ["line","reference","units","actions"];
   ngOnInit() {
     console.log('ngOnInit');
     console.log("delivery oninit");
