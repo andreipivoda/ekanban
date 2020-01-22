@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { DataService } from '../data.service';
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-dispatches",
@@ -11,11 +11,13 @@ import { DataService } from '../data.service';
 })
 export class DispatchesComponent implements OnInit {
   sub: Subscription;
+  user: String;
   tdata: any;
-  displayedColumns: string[] = ["line","reference","units","actions"];
-  constructor(private _data: DataService,private router: Router) {}
+  displayedColumns: string[] = ["line", "reference", "units", "actions"];
+  constructor(protected _data: DataService, private router: Router) {}
   ngOnInit() {
     console.log("dispatches oninit");
+    this.user = localStorage.getItem("activeUser");
     this.sub = this._data.getDispatches().subscribe(value => {
       this.tdata = value;
     });

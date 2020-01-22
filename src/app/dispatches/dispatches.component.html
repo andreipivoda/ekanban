@@ -7,6 +7,12 @@
             <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">Autentificare</button>
         </div>
     </mat-grid-tile>
+    <div class="todotitle">
+        <h1>Livrare</h1>
+    </div>
+    <div class="todoperson">
+        <h4>{{user}}</h4>
+    </div>
     <mat-grid-tile [colspan]="11">
         <table mat-table [dataSource]="tdata" class="mat-elevation-z8">
 

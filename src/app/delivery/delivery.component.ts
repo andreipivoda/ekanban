@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "../data.service";
 import { Subscription } from "rxjs";
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-delivery",
@@ -11,31 +11,35 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
   encapsulation: ViewEncapsulation.None
 })
 export class DeliveryComponent implements OnInit {
-  viewport = 'large';
-
-  constructor(private _data: DataService, private router: Router,private breakpointObserver: BreakpointObserver) {
-    console.log('constructor');
-    breakpointObserver.observe([
-      Breakpoints.HandsetLandscape,
-      Breakpoints.HandsetPortrait
-    ]).subscribe(result => {
-      if (result.matches) {
-        // console.log('match',result.matches,result)
-        this.viewport = 'small';
-      }
-    });
+  viewport = "large";
+  user;
+  constructor(
+    public _data: DataService,
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
+  ) {
+    console.log("constructor");
+    breakpointObserver
+      .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
+      .subscribe(result => {
+        if (result.matches) {
+          // console.log('match',result.matches,result)
+          this.viewport = "small";
+        }
+      });
   }
 
   sub: Subscription;
   tdata: any;
-  displayedColumns: string[] = ["line","reference","units","actions"];
+  displayedColumns: string[] = ["line", "reference", "units", "actions"];
   ngOnInit() {
-    console.log('ngOnInit');
+    console.log("ngOnInit");
     console.log("delivery oninit");
+    this.user = localStorage.getItem("activeUser");
     this.sub = this._data.getDelivery().subscribe(value => {
       this.tdata = value;
     });
-    console.log('this.viewport',this.viewport)
+    console.log("this.viewport", this.viewport);
   }
 
   sideBarAction(action) {
@@ -46,7 +50,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy');
+    console.log("ngOnDestroy");
     this.sub.unsubscribe();
   }
 }

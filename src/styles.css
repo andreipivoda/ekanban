@@ -104,3 +104,15 @@ th .mat-column-actions {
 /* .math-cell {
     padding: 30px;
 } */
+
+.todotitle {
+    position: fixed;
+    top: 1em;
+    left: 40%;
+}
+
+.todoperson {
+    position: fixed;
+    top: 1em;
+    left: 80%;
+}

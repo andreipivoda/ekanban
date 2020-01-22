@@ -8,7 +8,12 @@
         </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="11">
-
+        <div class="todotitle">
+            <h1>Incarcare</h1>
+        </div>
+        <div class="todoperson">
+            <h4> {{user}}</h4>
+        </div>
         <table mat-table [dataSource]="tdata" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
@@ -46,7 +51,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actiuni </th>
                 <mat-cell *matCellDef="let element">
-                    <button class="loadButton" mat-raised-button color="primary">Livrat</button>
+                    <button class="loadButton" mat-raised-button color="primary">Incarcat</button>
                 </mat-cell>
             </ng-container>
 

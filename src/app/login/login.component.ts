@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     if(user !== undefined)
       this._data.activeUser = user;
     else this._data.activeUser = 'user error'
+    localStorage.setItem('activeUser',user);
     console.log('user:',user)
     this.router.navigate(['./toget']);
   }
