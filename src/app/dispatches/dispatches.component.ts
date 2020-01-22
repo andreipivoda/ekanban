@@ -14,7 +14,7 @@ export class DispatchesComponent implements OnInit {
   user: String;
   tdata: any;
   displayedColumns: string[] = ["line", "reference", "units", "actions"];
-  constructor(protected _data: DataService, private router: Router) {}
+  constructor(protected _data: DataService, private router: Router) { }
   ngOnInit() {
     console.log("dispatches oninit");
     this.user = localStorage.getItem("activeUser");
@@ -30,6 +30,7 @@ export class DispatchesComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    console.log("ngOnDestroy");
     this.sub.unsubscribe();
   }
 }

@@ -12,11 +12,19 @@ export class DataService {
 
   }
 
+
+  // deploy = "http://localhost:3000/pyrodeploy";
+  // load = "http://localhost:3000/pyrodeploy";
+
+  deploy = "http://art-app24/portal-iro/api/pyrodeploy";
+  load = "http://art-app24/portal-iro/api/pyroload";
+
+
   getDelivery() {
-    return this._http.get("http://localhost:3000/pyrodeploy");
+    return this._http.get(this.deploy);
   }
 
   getDispatches() {
-    return this._http.get("http://localhost:3000/pyroload");
+    return this._http.get(this.load);
   }
 }
