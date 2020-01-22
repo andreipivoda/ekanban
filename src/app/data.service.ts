@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: "root"
@@ -11,13 +12,22 @@ export class DataService {
     console.log("data service oninit");
 
   }
+   httpOptions = {
+    headers: new HttpHeaders({
+      // 'Content-Type':  'application/json',
+      // 'Content-Type':  'application-x-www-form-urlencoded',
+      'Content-Type':  'application/x-www-form-urlencoded',
+      // 'Authorization': 'my-auth-token'
+    })
+  };
 
 
-  // deploy = "http://localhost:3000/pyrodeploy";
-  // load = "http://localhost:3000/pyrodeploy";
+  deploy = "http://localhost:3000/pyrodeploy";
+  load = "http://localhost:3000/pyroload";
 
-  deploy = "http://art-app24/portal-iro/api/pyrodeploy";
-  load = "http://art-app24/portal-iro/api/pyroload";
+
+  // deploy = "http://art-app24/portal-iro/api/pyrodeploy";
+  // load = "http://art-app24/portal-iro/api/pyroload";
 
 
   getDelivery() {
@@ -26,5 +36,18 @@ export class DataService {
 
   getDispatches() {
     return this._http.get(this.load);
+  }
+
+  // urlpostLoaded = "http://localhost:3000/pyroload";
+  // urlpostDelivered = "http://localhost:3000/pyrodeploy";
+
+  urlpostLoaded = "http://art-app24/portal-iro/api/pyro/load";
+  urlpostDelivered = "http://art-app24/portal-iro/api/pyro/deliver";
+
+  postLoaded(){
+    return this._http.post<string>(this.urlpostLoaded, '{"id":13",linie":"test"}', this.httpOptions)
+    .pipe(
+      // catchError(this.handleError('addHero', hero))
+    );
   }
 }

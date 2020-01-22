@@ -9,8 +9,8 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'toget', component: DeliveryComponent },
-  { path: 'todo',      component: DispatchesComponent },
-  { path: 'settings',      component: SettingsComponent },
+  { path: 'todo', component: DispatchesComponent },
+  { path: 'settings', component: SettingsComponent },
 ];
 
 @NgModule({
