@@ -15,19 +15,19 @@ export class DataService {
    httpOptions = {
     headers: new HttpHeaders({
       // 'Content-Type':  'application/json',
-      // 'Content-Type':  'application-x-www-form-urlencoded',
-      'Content-Type':  'application/x-www-form-urlencoded',
+      // 'Content-Type':  'application-x-www-form-urlencoded'
+      //'Content-Type':  'application/json'
       // 'Authorization': 'my-auth-token'
     })
   };
 
 
-  deploy = "http://localhost:3000/pyrodeploy";
-  load = "http://localhost:3000/pyroload";
+  // deploy = "http://localhost:3000/pyrodeploy";
+  // load = "http://localhost:3000/pyroload";
 
 
-  // deploy = "http://art-app24/portal-iro/api/pyrodeploy";
-  // load = "http://art-app24/portal-iro/api/pyroload";
+  deploy = "http://art-app24/portal-iro/api/pyrodeploy";
+  load = "http://art-app24/portal-iro/api/pyroload";
 
 
   getDelivery() {
@@ -45,7 +45,7 @@ export class DataService {
   urlpostDelivered = "http://art-app24/portal-iro/api/pyro/deliver";
 
   postLoaded(){
-    return this._http.post<string>(this.urlpostLoaded, '{"id":13",linie":"test"}', this.httpOptions)
+    return this._http.post<any>(this.urlpostLoaded, '{"data":"test"}', this.httpOptions)
     .pipe(
       // catchError(this.handleError('addHero', hero))
     );
