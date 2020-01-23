@@ -8,7 +8,7 @@
         </div>
     </mat-grid-tile>
     <div class="todotitle">
-        <h1>Livrare</h1>
+        <h1>Incarcare</h1>
     </div>
     <div class="todoperson">
         <h4>{{user}}</h4>
@@ -51,7 +51,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actiuni </th>
                 <mat-cell *matCellDef="let element">
-                    <button class="loadButton" (click)="delivered()" mat-raised-button color="primary">Livrat</button>
+                    <button class="loadButton" (click)="loaded(element)" mat-raised-button color="primary">Incarcat</button>
                 </mat-cell>
             </ng-container>
 

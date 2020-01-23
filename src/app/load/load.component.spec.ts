@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DispatchesComponent } from './dispatches.component';
+import { DispatchesComponent } from './load.component';
 
 describe('DispatchesComponent', () => {
   let component: DispatchesComponent;

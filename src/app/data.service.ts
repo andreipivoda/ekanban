@@ -44,8 +44,14 @@ export class DataService {
   urlpostLoaded = "http://art-app24/portal-iro/api/pyro/load";
   urlpostDelivered = "http://art-app24/portal-iro/api/pyro/deliver";
 
-  postLoaded(){
-    return this._http.post<any>(this.urlpostLoaded, '{"data":"test"}', this.httpOptions)
+  postLoaded(item){
+    return this._http.post<any>(this.urlpostLoaded, item, this.httpOptions)
+    .pipe(
+      // catchError(this.handleError('addHero', hero))
+    );
+  }
+  postDelivered(item){
+    return this._http.post<any>(this.urlpostDelivered, item, this.httpOptions)
     .pipe(
       // catchError(this.handleError('addHero', hero))
     );

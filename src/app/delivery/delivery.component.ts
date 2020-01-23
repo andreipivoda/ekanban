@@ -49,8 +49,11 @@ export class DeliveryComponent implements OnInit {
     if (action === "Setari") this.router.navigate(["./settings"]);
   }
 
-  loaded() {
-    console.log('loaded!');
+  delivered(data) {
+    console.log('delivered!');
+    this._data
+      .postDelivered(data)
+      .subscribe(data => (data));
 
   }
   ngOnDestroy() {

@@ -34,11 +34,11 @@ export class DispatchesComponent implements OnInit {
     if (action === "Setari") this.router.navigate(["./settings"]);
   }
 
-  delivered() {
-    console.log('delivered!');
+  loaded(data) {
+    console.log('loaded!');
     this._data
-      .postLoaded()
-      .subscribe(hero => (hero));
+      .postLoaded(data)
+      .subscribe(data => (data));
   }
   ngOnDestroy() {
     console.log("ngOnDestroy");
