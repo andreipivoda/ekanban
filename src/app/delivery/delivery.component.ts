@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { DataService } from "../data.service";
 import { Subscription } from "rxjs";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import { Dispatch } from '../dispatch';
 
 @Component({
   selector: "app-delivery",
@@ -12,48 +13,50 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 })
 export class DeliveryComponent implements OnInit {
   viewport = "large";
-  user;
+  user: string;
   constructor(
     public _data: DataService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {
-    console.log("constructor");
-    breakpointObserver
-      .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
-      .subscribe(result => {
-        if (result.matches) {
-          // console.log('match',result.matches,result)
-          this.viewport = "small";
-        }
-      });
+    // console.log("constructor DeliveryComponent");
+    // breakpointObserver
+    //   .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
+    //   .subscribe(result => {
+    //     if (result.matches) {
+    //       // console.log('match',result.matches,result)
+    //       this.viewport = "small";
+    //     }
+    //   });
   }
 
   sub: Subscription;
-  tdata: any;
+  tdata: Dispatch[];
   displayedColumns: string[] = ["line", "reference", "units", "actions"];
+
+
   ngOnInit() {
-    console.log("ngOnInit");
-    console.log("delivery oninit");
+    // console.log("ngOnInit DeliveryComponent");
+    // console.log("delivery oninit");
     this.user = localStorage.getItem("activeUser");
-    this.sub = this._data.getDelivery().subscribe(value => {
+    this.sub = this._data.getDelivery().subscribe((value: Dispatch[]) => {
       this.tdata = value;
     });
-    console.log("this.viewport", this.viewport);
+    // console.log("this.viewport", this.viewport);
   }
 
-  sideBarAction(action) {
+  sideBarAction(action: string) {
     if (action === "Autentificare") this.router.navigate([""]);
     if (action === "LIVRARE") this.router.navigate(["./todo"]);
     if (action === "INCARCARE") this.router.navigate(["./toget"]);
     if (action === "Setari") this.router.navigate(["./settings"]);
   }
 
-  delivered(data) {
-    console.log('delivered!');
+  delivered(dispatch: Dispatch) {
+    this.tdata = this.tdata.filter((d: Dispatch) => d != dispatch)
     this._data
-      .postDelivered(data)
-      .subscribe(data => (data));
+      .postDelivered(dispatch)
+      .subscribe(response => console.log('RESPONSE', response));
 
   }
   ngOnDestroy() {
