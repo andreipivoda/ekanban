@@ -8,8 +8,8 @@ import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'toget', component: DeliveryComponent },
-  { path: 'todo', component: LoadingComponent },
+  { path: 'toget', component: LoadingComponent },
+  { path: 'todo', component: DeliveryComponent },
   { path: 'settings', component: SettingsComponent },
 ];
 
