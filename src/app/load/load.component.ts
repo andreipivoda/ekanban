@@ -3,8 +3,7 @@ import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { DataService } from "../data.service";
 import { Dispatch } from '../dispatch';
-import { interval } from 'rxjs';
-import { Observable } from 'rxjs';
+// import { interval } from 'rxjs';
 
 @Component({
   selector: "app-load",
@@ -24,30 +23,40 @@ export class LoadingComponent implements OnInit {
   ngOnInit() {
     // console.log("dispatches oninit");
     this.user = localStorage.getItem("activeUser");
+    this.subDispatches();
+
+  }
+
+  subDispatches() {
 
     this.sub = this._data.getDispatches().subscribe((value: Dispatch[]) => {
       // console.log("this.tdata", this.tdata);
       this.tdata = value;
     });
-
   }
+  interval = setInterval(() => {
+    this.subDispatches();
+  }, 5000);
+
+
   sideBarAction(action: string) {
     if (action === "Autentificare") this.router.navigate([""]);
-    if (action === "LIVRARE") this.router.navigate(["./todo"]);
-    if (action === "INCARCARE") this.router.navigate(["./toget"]);
-    if (action === "Setari") this.router.navigate(["./settings"]);
+    else if (action === "LIVRARE") this.router.navigate(["./todo"]);
+    else if (action === "INCARCARE") this.router.navigate(["./toget"]);
+    else if (action === "Setari") this.router.navigate(["./settings"]);
   }
 
   loaded(dispatch: Dispatch) {
     console.log('loaded!');
-    this.tdata = this.tdata.filter((d: Dispatch) => d != dispatch);
+    this.tdata = this.tdata.filter(disp => disp != dispatch);
     this._data
       .postLoaded(dispatch)
-      .subscribe(response => console.log('RESPONSE', response));
+      .subscribe();
 
   }
   ngOnDestroy() {
     console.log("ngOnDestroy");
     this.sub.unsubscribe();
+    clearInterval(this.interval);
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError, retry } from 'rxjs/operators';
 import { Dispatch } from './dispatch';
 
 @Injectable({
@@ -47,15 +46,9 @@ export class DataService {
 
   postLoaded(item: Dispatch) {
     return this._http.post<Dispatch>(this.urlpostLoaded, item, this.httpOptions)
-      .pipe(
-        // catchError(this.handleError('addHero', hero))
-      );
   }
   postDelivered(item: Dispatch) {
     item.resource = this.activeUser;
     return this._http.post<Dispatch>(this.urlpostDelivered, item, this.httpOptions)
-      .pipe(
-        // catchError(this.handleError('addHero', hero))
-      );
   }
 }

@@ -12,8 +12,13 @@ import { Dispatch } from '../dispatch';
   encapsulation: ViewEncapsulation.None
 })
 export class DeliveryComponent implements OnInit {
+
   viewport = "large";
   user: string;
+  sub: Subscription;
+  tdata: Dispatch[];
+  displayedColumns: string[] = ["line", "reference", "units", "actions"];
+
   constructor(
     public _data: DataService,
     private router: Router,
@@ -29,38 +34,41 @@ export class DeliveryComponent implements OnInit {
     //     }
     //   });
   }
-
-  sub: Subscription;
-  tdata: Dispatch[];
-  displayedColumns: string[] = ["line", "reference", "units", "actions"];
-
-
   ngOnInit() {
     // console.log("ngOnInit DeliveryComponent");
     // console.log("delivery oninit");
     this.user = localStorage.getItem("activeUser");
-    this.sub = this._data.getDelivery().subscribe((value: Dispatch[]) => {
-      this.tdata = value;
-    });
+    this.subDelivery();
     // console.log("this.viewport", this.viewport);
   }
 
+  subDelivery() {
+    this.sub = this._data.getDelivery().subscribe((value: Dispatch[]) => {
+      this.tdata = value;
+    });
+  }
+
+  interval = setInterval(() => {
+    this.subDelivery();
+  }, 5000);
+
   sideBarAction(action: string) {
     if (action === "Autentificare") this.router.navigate([""]);
-    if (action === "LIVRARE") this.router.navigate(["./todo"]);
-    if (action === "INCARCARE") this.router.navigate(["./toget"]);
-    if (action === "Setari") this.router.navigate(["./settings"]);
+    else if (action === "LIVRARE") this.router.navigate(["./todo"]);
+    else if (action === "INCARCARE") this.router.navigate(["./toget"]);
+    else if (action === "Setari") this.router.navigate(["./settings"]);
   }
 
   delivered(dispatch: Dispatch) {
-    this.tdata = this.tdata.filter((d: Dispatch) => d != dispatch)
+    this.tdata = this.tdata.filter(disp => disp != dispatch)
     this._data
       .postDelivered(dispatch)
-      .subscribe(response => console.log('RESPONSE', response));
+      .subscribe();
 
   }
   ngOnDestroy() {
     console.log("ngOnDestroy");
     this.sub.unsubscribe();
+    clearInterval(this.interval);
   }
 }

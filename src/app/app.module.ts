@@ -17,6 +17,7 @@ import { LoginComponent } from "./login/login.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatListModule } from "@angular/material/list";
+
 @NgModule({
   declarations: [
     AppComponent,
