@@ -11,7 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule } from "@angular/material/button";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatTableModule } from "@angular/material/table";
-import { DispatchesComponent } from "./load/load.component";
+import { LoadingComponent } from "./load/load.component";
 import { DeliveryComponent } from "./delivery/delivery.component";
 import { LoginComponent } from "./login/login.component";
 import { SettingsComponent } from "./settings/settings.component";
@@ -20,7 +20,7 @@ import { MatListModule } from "@angular/material/list";
 @NgModule({
   declarations: [
     AppComponent,
-    DispatchesComponent,
+    LoadingComponent,
     DeliveryComponent,
     LoginComponent,
     SettingsComponent

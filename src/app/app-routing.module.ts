@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DeliveryComponent } from './delivery/delivery.component';
-import { DispatchesComponent } from './load/load.component';
+import { LoadingComponent } from './load/load.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -9,7 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'toget', component: DeliveryComponent },
-  { path: 'todo', component: DispatchesComponent },
+  { path: 'todo', component: LoadingComponent },
   { path: 'settings', component: SettingsComponent },
 ];
 

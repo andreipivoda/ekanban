@@ -5,12 +5,12 @@ import { DataService } from "../data.service";
 import { Dispatch } from '../dispatch';
 
 @Component({
-  selector: "app-dispatches",
-  templateUrl: "./dispatches.component.html",
-  styleUrls: ["./dispatches.component.css"],
+  selector: "app-load",
+  templateUrl: "./load.component.html",
+  styleUrls: ["./load.component.css"],
   encapsulation: ViewEncapsulation.None
 })
-export class DispatchesComponent implements OnInit {
+export class LoadingComponent implements OnInit {
 
   sub: Subscription;
   user: String;
