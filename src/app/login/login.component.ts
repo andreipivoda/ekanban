@@ -20,6 +20,6 @@ export class LoginComponent implements OnInit {
     else this._data.activeUser = 'user error'
     localStorage.setItem('activeUser', user);
     console.log('user:', user)
-    this.router.navigate(['./todo']);
+    this.router.navigate(['./toget']);
   }
 }

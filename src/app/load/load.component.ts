@@ -36,7 +36,7 @@ export class LoadingComponent implements OnInit {
   }
   interval = setInterval(() => {
     this.subDispatches();
-  }, 5000);
+  }, 30000);
 
 
   sideBarAction(action: string) {

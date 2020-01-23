@@ -50,7 +50,7 @@ export class DeliveryComponent implements OnInit {
 
   interval = setInterval(() => {
     this.subDelivery();
-  }, 5000);
+  }, 30000);
 
   sideBarAction(action: string) {
     if (action === "Autentificare") this.router.navigate([""]);
