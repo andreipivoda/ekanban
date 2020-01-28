@@ -14,14 +14,14 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  lines = [{ line: "Linia C0", active: false },
-  { line: "Linia C1", active: true },
-  { line: "Linia C2", active: false },
-  { line: "Linia C3", active: false },
-  { line: "Linia C4", active: false },
-  { line: "Linia C5", active: false },
-  { line: "Linia C6", active: false },
-  { line: "Linia C7", active: false }];
+  lines = [{ line: 'Linia C0', active: false },
+  { line: 'Linia C1', active: true },
+  { line: 'Linia C2', active: false },
+  { line: 'Linia C3', active: false },
+  { line: 'Linia C4', active: false },
+  { line: 'Linia C5', active: false },
+  { line: 'Linia C6', active: false },
+  { line: 'Linia C7', active: false }];
 
   list;
 
@@ -41,14 +41,10 @@ export class SettingsComponent implements OnInit {
   }
 
   sideBarAction(action) {
-    if (action === "Autentificare")
-      this.router.navigate(['']);
-    if (action === "LIVRARE")
-      this.router.navigate(['./todo']);
-    if (action === "INCARCARE")
-      this.router.navigate(['./toget']);
-    if (action === "Setari")
-      this.router.navigate(['./settings']);
+    if (action === 'Autentificare') {this.router.navigate(['']);}
+    if (action === 'LIVRARE') { this.router.navigate(['./todo']); }
+    if (action === 'INCARCARE') { this.router.navigate(['./toget']); }
+    if (action === 'Setari') { this.router.navigate(['./settings']); }
   }
 
 }
