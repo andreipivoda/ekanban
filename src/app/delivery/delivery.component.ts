@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Dispatch } from '../dispatch';
 
 @Component({
@@ -18,31 +17,20 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   sub: Subscription;
   tdata: Dispatch[];
   displayedColumns: string[] = ['line', 'reference', 'units', 'actions'];
+
   interval = setInterval(() => {
     this.subDelivery();
   }, 30000);
 
   constructor(
     public data: DataService,
-    private router: Router,
-    private breakpointObserver: BreakpointObserver
+    private router: Router
   ) {
-    // console.log('constructor DeliveryComponent');
-    // breakpointObserver
-    //   .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
-    //   .subscribe(result => {
-    //     if (result.matches) {
-    //       // console.log('match',result.matches,result)
-    //       this.viewport = 'small';
-    //     }
-    //   });
+
   }
   ngOnInit() {
-    // console.log('ngOnInit DeliveryComponent');
-    // console.log('delivery oninit');
     this.user = localStorage.getItem('activeUser');
     this.subDelivery();
-    // console.log('this.viewport', this.viewport);
   }
 
   subDelivery() {
@@ -67,13 +55,11 @@ export class DeliveryComponent implements OnInit, OnDestroy {
 
   delivered(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
-    this.data
-      .postDelivered(dispatch)
-      .subscribe();
+    this.data.postDelivered(dispatch).subscribe();
 
   }
   ngOnDestroy() {
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
     this.sub.unsubscribe();
     clearInterval(this.interval);
   }

@@ -56,9 +56,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
   loaded(dispatch: Dispatch) {
     console.log('loaded!');
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
-    this.Data
-      .postLoaded(dispatch)
-      .subscribe();
+    this.Data.postLoaded(dispatch).subscribe();
 
   }
   ngOnDestroy() {

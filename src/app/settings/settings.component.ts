@@ -40,7 +40,7 @@ export class SettingsComponent implements OnInit {
     localStorage.setItem('IRO123', JSON.stringify(this.lines));
   }
 
-  sideBarAction(action) {
+  sideBarAction(action: string) {
     if (action === 'Autentificare') {
       this.router.navigate(['']);
     }

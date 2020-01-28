@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  setUser(user) {
+  setUser(user: string) {
     if (user !== undefined) {
       this.data.activeUser = user;
     } else {

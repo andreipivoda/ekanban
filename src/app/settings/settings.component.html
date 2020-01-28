@@ -1,23 +1,19 @@
 <mat-grid-list cols="12" rowHeight="1:6">
-  <mat-grid-tile [colspan]="1" style="background-color: lightcyan;">
-    <div class="sidebtn-container">
-      <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons"
-        color="primary">LIVRARE</button>
-      <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons"
-        color="primary">INCARCARE</button>
-      <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons"
-        color="primary">Setari</button>
-      <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons"
-        color="primary">Autentificare</button>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="11">
-    <div class="sliders">
-      <div *ngFor="let item of lines;index as i;">
-        <mat-slide-toggle disabled [checked]="item.active" (change)="setValue($event)" class="slide-toggle">
-          {{item.line}}</mat-slide-toggle>
-      </div>
-    </div>
-  </mat-grid-tile>
-  <!-- <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile> -->
+    <mat-grid-tile [colspan]="1" style="background-color: lightcyan;">
+        <div class="sidebtn-container">
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">LIVRARE</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">INCARCARE</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">Setari</button>
+            <button (click)="sideBarAction($event.target.innerText)" mat-raised-button class="sideButtons" color="primary">Autentificare</button>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="11">
+        <div class="sliders">
+            <div *ngFor="let item of lines;index as i;">
+                <mat-slide-toggle disabled [checked]="item.active" (change)="setValue($event)" class="slide-toggle">
+                    {{item.line}}</mat-slide-toggle>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile> -->
 </mat-grid-list>
