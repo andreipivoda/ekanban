@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
@@ -11,14 +11,18 @@ import { Dispatch } from '../dispatch';
   styleUrls: ['./load.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent implements OnInit, OnDestroy {
 
   sub: Subscription;
   user: string;
   tdata: Dispatch[];
   displayedColumns: string[] = ['line', 'reference', 'units', 'actions'];
 
-  constructor(protected _data: DataService, private router: Router) { }
+  interval = setInterval(() => {
+    this.subDispatches();
+  }, 30000);
+
+  constructor(private Data: DataService, private router: Router) { }
 
   ngOnInit() {
     // console.log('dispatches oninit');
@@ -29,27 +33,30 @@ export class LoadingComponent implements OnInit {
 
   subDispatches() {
 
-    this.sub = this._data.getDispatches().subscribe((value: Dispatch[]) => {
+    this.sub = this.Data.getDispatches().subscribe((value: Dispatch[]) => {
       // console.log('this.tdata', this.tdata);
       this.tdata = value;
     });
   }
-  interval = setInterval(() => {
-    this.subDispatches();
-  }, 30000);
+
 
 
   sideBarAction(action: string) {
-    if (action === 'Autentificare') this.router.navigate(['']);
-    else if (action === 'LIVRARE') this.router.navigate(['./todo']);
-    else if (action === 'INCARCARE') this.router.navigate(['./toget']);
-    else if (action === 'Setari') this.router.navigate(['./settings']);
+    if (action === 'Autentificare') {
+      this.router.navigate(['']);
+    } else if (action === 'LIVRARE') {
+      this.router.navigate(['./todo']);
+    } else if (action === 'INCARCARE') {
+      this.router.navigate(['./toget']);
+    } else if (action === 'Setari') {
+      this.router.navigate(['./settings']);
+    }
   }
 
   loaded(dispatch: Dispatch) {
     console.log('loaded!');
-    this.tdata = this.tdata.filter(disp => disp != dispatch);
-    this._data
+    this.tdata = this.tdata.filter(disp => disp !== dispatch);
+    this.Data
       .postLoaded(dispatch)
       .subscribe();
 

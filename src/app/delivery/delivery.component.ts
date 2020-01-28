@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Subscription } from 'rxjs';
@@ -11,16 +11,19 @@ import { Dispatch } from '../dispatch';
   styleUrls: ['./delivery.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class DeliveryComponent implements OnInit {
+export class DeliveryComponent implements OnInit, OnDestroy {
 
   viewport = 'large';
   user: string;
   sub: Subscription;
   tdata: Dispatch[];
   displayedColumns: string[] = ['line', 'reference', 'units', 'actions'];
+  interval = setInterval(() => {
+    this.subDelivery();
+  }, 30000);
 
   constructor(
-    public _data: DataService,
+    public data: DataService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {
@@ -43,25 +46,28 @@ export class DeliveryComponent implements OnInit {
   }
 
   subDelivery() {
-    this.sub = this._data.getDelivery().subscribe((value: Dispatch[]) => {
+    this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
       this.tdata = value;
     });
   }
 
-  interval = setInterval(() => {
-    this.subDelivery();
-  }, 30000);
+
 
   sideBarAction(action: string) {
-    if (action === 'Autentificare') {this.router.navigate(['']);}
-    else if (action === 'LIVRARE') {this.router.navigate(['./todo']);}
-    else if (action === 'INCARCARE') {this.router.navigate(['./toget']);}
-    else if (action === 'Setari') {this.router.navigate(['./settings']);}
+    if (action === 'Autentificare') {
+      this.router.navigate(['']);
+    } else if (action === 'LIVRARE') {
+      this.router.navigate(['./todo']);
+    } else if (action === 'INCARCARE') {
+      this.router.navigate(['./toget']);
+    } else if (action === 'Setari') {
+      this.router.navigate(['./settings']);
+    }
   }
 
   delivered(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
-    this._data
+    this.data
       .postDelivered(dispatch)
       .subscribe();
 

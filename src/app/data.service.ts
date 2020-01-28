@@ -30,25 +30,25 @@ export class DataService {
   urlpostDelivered = 'http://art-app24/portal-iro/api/pyro/deliver';
 
 
-  constructor(private _http: HttpClient) {
+  constructor(private Http: HttpClient) {
     // console.log('data service oninit');
     this.activeUser = localStorage.getItem('activeUser');
   }
 
   getDelivery() {
-    return this._http.get(this.deploy);
+    return this.Http.get(this.deploy);
   }
 
   getDispatches() {
-    return this._http.get(this.load);
+    return this.Http.get(this.load);
   }
 
 
   postLoaded(item: Dispatch) {
-    return this._http.post<Dispatch>(this.urlpostLoaded, item, this.httpOptions);
+    return this.Http.post<Dispatch>(this.urlpostLoaded, item, this.httpOptions);
   }
   postDelivered(item: Dispatch) {
     item.resource = this.activeUser;
-    return this._http.post<Dispatch>(this.urlpostDelivered, item, this.httpOptions);
+    return this.Http.post<Dispatch>(this.urlpostDelivered, item, this.httpOptions);
   }
 }

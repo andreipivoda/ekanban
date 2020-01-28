@@ -27,7 +27,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.list = localStorage.getItem('IRO123');
-    console.log('got', this.list)
+    console.log('got', this.list);
 
 
   }
@@ -41,10 +41,18 @@ export class SettingsComponent implements OnInit {
   }
 
   sideBarAction(action) {
-    if (action === 'Autentificare') {this.router.navigate(['']);}
-    if (action === 'LIVRARE') { this.router.navigate(['./todo']); }
-    if (action === 'INCARCARE') { this.router.navigate(['./toget']); }
-    if (action === 'Setari') { this.router.navigate(['./settings']); }
+    if (action === 'Autentificare') {
+      this.router.navigate(['']);
+    }
+    if (action === 'LIVRARE') {
+      this.router.navigate(['./todo']);
+    }
+    if (action === 'INCARCARE') {
+      this.router.navigate(['./toget']);
+    }
+    if (action === 'Setari') {
+      this.router.navigate(['./settings']);
+    }
   }
 
 }
