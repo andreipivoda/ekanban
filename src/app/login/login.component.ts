@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       tdata.length > 0 ? this.router.navigate(['./todo']) : this.router.navigate(['./toget']);
 
     });
-    console.log('sub:', this.sub);
 
   }
 

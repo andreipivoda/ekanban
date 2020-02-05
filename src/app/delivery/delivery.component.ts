@@ -15,7 +15,7 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   viewport = 'large';
   user: string;
   sub: Subscription;
-  tdata: Dispatch[];
+  tdata: Dispatch[] = [];
   displayedColumns: string[] = ['line', 'reference', 'units', 'actions'];
 
   interval = setInterval(() => {
@@ -36,6 +36,8 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   subDelivery() {
     this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
       this.tdata = value.filter(dispatch => dispatch.resource === this.user);
+      console.log('this.tdata.length',this.tdata.length);
+      this.tdata.length === 0 ? this.router.navigate(['./toget']) : null;
     });
   }
 
@@ -60,7 +62,6 @@ export class DeliveryComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy() {
-    // console.log('ngOnDestroy');
     this.sub.unsubscribe();
     clearInterval(this.interval);
   }

@@ -25,7 +25,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
   constructor(private Data: DataService, private router: Router) { }
 
   ngOnInit() {
-    // console.log('dispatches oninit');
     this.user = localStorage.getItem('activeUser');
     this.subDispatches();
 
@@ -33,7 +32,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
   subDispatches() {
     this.sub = this.Data.getDispatches().subscribe((value: Dispatch[]) => {
-      // console.log('this.tdata', this.tdata);
       this.tdata = value;
     });
   }
@@ -53,13 +51,13 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   loaded(dispatch: Dispatch) {
-    console.log('loaded!');
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
     this.Data.postLoaded(dispatch).subscribe();
+    console.log('this.tdata.length',this.tdata.length);
+    this.tdata.length === 0 ? this.router.navigate(['./todo']) : null;
 
   }
   ngOnDestroy() {
-    console.log('ngOnDestroy');
     this.sub.unsubscribe();
     clearInterval(this.interval);
   }
