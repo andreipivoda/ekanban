@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { Dispatch } from '../dispatch';
-// import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-load',
@@ -53,8 +52,11 @@ export class LoadingComponent implements OnInit, OnDestroy {
   loaded(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
     this.Data.postLoaded(dispatch).subscribe();
-    console.log('this.tdata.length',this.tdata.length);
-    this.tdata.length === 0 ? this.router.navigate(['./todo']) : null;
+    console.log('this.tdata.length', this.tdata.length);
+    if (this.tdata.length === 0) {
+      this.router.navigate(['./todo']);
+    }
+
 
   }
   ngOnDestroy() {

@@ -36,8 +36,11 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   subDelivery() {
     this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
       this.tdata = value.filter(dispatch => dispatch.resource === this.user);
-      console.log('this.tdata.length',this.tdata.length);
-      this.tdata.length === 0 ? this.router.navigate(['./toget']) : null;
+      console.log('this.tdata.length', this.tdata.length);
+      if (this.tdata.length === 0) {
+        this.router.navigate(['./toget']);
+      }
+
     });
   }
 
@@ -58,7 +61,10 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   delivered(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
     this.data.postDelivered(dispatch).subscribe();
-    this.tdata.length === 0 ? this.router.navigate(['./toget']) : null;
+    if (this.tdata.length === 0) {
+      this.router.navigate(['./toget']);
+    }
+
 
   }
   ngOnDestroy() {
