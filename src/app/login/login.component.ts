@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Dispatch } from '../dispatch';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  sub:Subscription;
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit() {
@@ -22,6 +25,11 @@ export class LoginComponent implements OnInit {
     }
     localStorage.setItem('activeUser', user);
     console.log('user:', user);
-    this.router.navigate(['./toget']);
+    let tdata = [];
+    this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
+      tdata = value.filter(dispatch => dispatch.resource === user);
+    });
+    tdata.length > 0 ? this.router.navigate(['./todo']) : this.router.navigate(['./toget']);
+
   }
 }

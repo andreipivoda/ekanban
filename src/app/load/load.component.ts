@@ -32,7 +32,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   subDispatches() {
-
     this.sub = this.Data.getDispatches().subscribe((value: Dispatch[]) => {
       // console.log('this.tdata', this.tdata);
       this.tdata = value;
