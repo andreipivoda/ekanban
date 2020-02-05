@@ -35,7 +35,8 @@ export class DeliveryComponent implements OnInit, OnDestroy {
 
   subDelivery() {
     this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
-      this.tdata = value;
+
+      this.tdata = value.filter(v=>v.resource === this.user);
     });
   }
 

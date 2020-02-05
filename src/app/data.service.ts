@@ -49,6 +49,7 @@ export class DataService {
     return this.Http.post<Dispatch>(this.urlpostLoaded, item, this.httpOptions);
   }
   postDelivered(item: Dispatch) {
+    item.resource = this.activeUser;
     return this.Http.post<Dispatch>(this.urlpostDelivered, item, this.httpOptions);
   }
 }
