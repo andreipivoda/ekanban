@@ -3,17 +3,20 @@
 
     </mat-grid-tile>
     <mat-grid-tile [colspan]="11">
+
+        <h1 style="margin-bottom: 100px;">Utilizator autentificat: {{user}}</h1>
+        <span>Daca nu esti tu da click pe numele tau:</span>
         <div class="userlist">
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO6295</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO7247</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO9335</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO8133</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO5015</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO9008</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO7233</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO2617</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO6139</button>
-            <button (click)="setUser($event.target.innerText)" mat-raised-button class="custom" color="primary">IRO1874</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO6295')}" color="primary">IRO6295</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO7247')}" color="primary">IRO7247</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO9335')}" color="primary">IRO9335</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO8133')}" color="primary">IRO8133</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO5015')}" color="primary">IRO5015</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO9008')}" color="primary">IRO9008</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO7233')}" color="primary">IRO7233</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO2617')}" color="primary">IRO2617</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO6139')}" color="primary">IRO6139</button>
+            <button (click)="setUser($event.target.innerText)" mat-raised-button [ngClass]="{'custom':true,'active':getActive('IRO1874')}" color="primary">IRO1874</button>
         </div>
     </mat-grid-tile>
     <!-- <mat-grid-tile style="background-color: lightcyan;"></mat-grid-tile> -->

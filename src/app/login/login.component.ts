@@ -11,10 +11,12 @@ import { Dispatch } from '../dispatch';
 })
 export class LoginComponent implements OnInit {
 
-  sub:Subscription;
+  sub: Subscription;
+  user: string;
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit() {
+    this.user = localStorage.getItem('activeUser');
   }
 
   setUser(user: string) {
@@ -24,12 +26,17 @@ export class LoginComponent implements OnInit {
       this.data.activeUser = 'user error';
     }
     localStorage.setItem('activeUser', user);
-    console.log('user:', user);
     let tdata = [];
     this.sub = this.data.getDelivery().subscribe((value: Dispatch[]) => {
       tdata = value.filter(dispatch => dispatch.resource === user);
-    });
-    tdata.length > 0 ? this.router.navigate(['./todo']) : this.router.navigate(['./toget']);
+      tdata.length > 0 ? this.router.navigate(['./todo']) : this.router.navigate(['./toget']);
 
+    });
+    console.log('sub:', this.sub);
+
+  }
+
+  getActive(itm) {
+    return itm === this.user ? 'active' : null;
   }
 }

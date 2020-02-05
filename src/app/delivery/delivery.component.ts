@@ -56,6 +56,7 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   delivered(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);
     this.data.postDelivered(dispatch).subscribe();
+    this.tdata.length === 0 ? this.router.navigate(['./toget']) : null;
 
   }
   ngOnDestroy() {

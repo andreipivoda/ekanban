@@ -1,5 +1,5 @@
 .custom {
-    background-color: green !important;
+    background-color: gray;
     /* color: #fff !important; */
     width: 200px;
     height: 75px;
@@ -9,4 +9,8 @@
 .userlist {
     margin-top: 3em;
     margin-left: 3em;
+}
+
+.active {
+    background-color: green !important;
 }
