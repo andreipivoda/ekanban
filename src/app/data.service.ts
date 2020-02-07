@@ -18,16 +18,16 @@ export class DataService {
     })
   };
 
-  // deploy = 'http://localhost:3000/pyrodeploy';
-  // load = 'http://localhost:3000/pyroload';
-  // urlpostLoaded = 'http://localhost:3000/pyroload';
-  // urlpostDelivered = 'http://localhost:3000/pyrodeploy';
+  deploy = 'http://localhost:3000/pyrodeploy';
+  load = 'http://localhost:3000/pyroload';
+  urlpostLoaded = 'http://localhost:3000/pyroload';
+  urlpostDelivered = 'http://localhost:3000/pyrodeploy';
 
 
-  deploy = 'http://art-app24/portal-iro/api/pyrodeploy';
-  load = 'http://art-app24/portal-iro/api/pyroload';
-  urlpostLoaded = 'http://art-app24/portal-iro/api/pyro/load';
-  urlpostDelivered = 'http://art-app24/portal-iro/api/pyro/deliver';
+  // deploy = 'http://art-app24/portal-iro/api/pyrodeploy';
+  // load = 'http://art-app24/portal-iro/api/pyroload';
+  // urlpostLoaded = 'http://art-app24/portal-iro/api/pyro/load';
+  // urlpostDelivered = 'http://art-app24/portal-iro/api/pyro/deliver';
 
 
   constructor(private Http: HttpClient) {

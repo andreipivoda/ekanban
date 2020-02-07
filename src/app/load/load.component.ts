@@ -37,17 +37,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
 
 
-  sideBarAction(action: string) {
-    if (action === 'Autentificare') {
-      this.router.navigate(['']);
-    } else if (action === 'LIVRARE') {
-      this.router.navigate(['./todo']);
-    } else if (action === 'INCARCARE') {
-      this.router.navigate(['./toget']);
-    } else if (action === 'Setari') {
-      this.router.navigate(['./settings']);
-    }
-  }
+
 
   loaded(dispatch: Dispatch) {
     this.tdata = this.tdata.filter(disp => disp !== dispatch);

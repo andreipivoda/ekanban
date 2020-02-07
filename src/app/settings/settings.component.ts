@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor() {
 
   }
 
@@ -40,19 +39,6 @@ export class SettingsComponent implements OnInit {
     localStorage.setItem('IRO123', JSON.stringify(this.lines));
   }
 
-  sideBarAction(action: string) {
-    if (action === 'Autentificare') {
-      this.router.navigate(['']);
-    }
-    if (action === 'LIVRARE') {
-      this.router.navigate(['./todo']);
-    }
-    if (action === 'INCARCARE') {
-      this.router.navigate(['./toget']);
-    }
-    if (action === 'Setari') {
-      this.router.navigate(['./settings']);
-    }
-  }
+
 
 }

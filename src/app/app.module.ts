@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatListModule } from '@angular/material/list';
     LoadingComponent,
     DeliveryComponent,
     LoginComponent,
-    SettingsComponent
+    SettingsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
